@@ -29,6 +29,10 @@ const Router = createBrowserRouter([
         path: "/auth",
         element: <h1>Crowd Club auth layout</h1>
     },
+    {
+        path: "*",
+        element: <h1>404 Error</h1>
+    },
 ])
 
 export default Router;
