@@ -1,5 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomeLayout from "../Layouts/HomeLayout";
+import AddNewCampaign from "../Layouts/AddNewCampaign";
+import AllCampaign from "../Layouts/AllCampaign";
+import MyCampaign from "../Layouts/MyCampaign";
+import MyDonations from "../Layouts/MyDonations";
 
 const Router = createBrowserRouter([
     {
@@ -8,7 +12,8 @@ const Router = createBrowserRouter([
     },
     {
         path: "/allcampaing",
-        element: <h1>Crowd Club allcampaing layout</h1>
+        element: <AllCampaign></AllCampaign>,
+        loader: () => fetch('http://localhost:5000/campaings')
     },
     {
         path: "/campaing-detail",
@@ -16,15 +21,15 @@ const Router = createBrowserRouter([
     },
     {
         path: "/add-new-campaign",
-        element: <h1>Crowd Club add-new-campaign layout</h1>
+        element: <AddNewCampaign></AddNewCampaign>
     },
     {
         path: "/mycampaign",
-        element: <h1>Crowd Club mycampaign layout</h1>
+        element: <MyCampaign></MyCampaign>
     },
     {
         path: "/mydonations",
-        element: <h1>Crowd Club mydonations layout</h1>
+        element: <MyDonations></MyDonations>
     },
     {
         path: "/auth",
