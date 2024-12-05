@@ -2,9 +2,11 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaEye } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
-  const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
+  const { createNewUser, setUser, updateUserProfile, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [show, setShow] = useState(false);
@@ -32,13 +34,26 @@ const Register = () => {
         setUser(user);
         navigate("/");
         updateUserProfile({ displayName: name, photoURL: photo });
+        toast.success("Resgitration Successful");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
+        toast.error(`Error: ${error.message}`);
       });
   };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate("/");
+        toast.success("Resgitration Successful");
+      })
+      .catch((error) => {
+        toast.error(`Error: ${error.message}`);
+      });
+  };
+
   return (
     <div className="max-w-[380px] mx-auto py-[90px] px-2">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -107,7 +122,7 @@ const Register = () => {
         </form>
         <div className="px-8 w-full">
           <div className="divider"></div>
-          <button className="btn btn-outline w-full">
+          <button onClick={handleGoogleLogin} className="btn btn-outline w-full">
             Register With Google
           </button>
           <div className="flex gap-2 mt-4 text-sm  mb-6">

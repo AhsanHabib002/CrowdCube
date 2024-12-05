@@ -2,6 +2,9 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/crowdlogo.png";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
+
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -92,25 +95,26 @@ const Navbar = () => {
           </div>
           <div className="navbar-end">
             {user && user?.email ? (
-              <div className="relative group flex gap-2">
+              <div className="relative group flex justify-center items-center gap-2">
                 <img
                   src={user.photoURL}
                   alt={user.displayName}
-                  className="w-10 h-10 rounded-full cursor-pointer object-cover"
+                  className="w-10 h-10 rounded-full cursor-pointer"
+                  data-tooltip-content={user.displayName} // Tooltip content
+                  data-tooltip-id="userTooltip"
                 />
-                {/* Logout Button */}
+                <Tooltip
+                  id="userTooltip"
+                  place="bottom"
+                  effect="solid"
+                  className="text-sm text-gray-700 bg-white border border-gray-300 p-2 rounded-md"
+                />
                 <button
                   onClick={logout}
-                  className="mt-2 bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
+                  className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
                 >
                   Logout
                 </button>
-                <div className="absolute top-9 right-0 mt-2 w-48 bg-white shadow-md rounded-lg p-4 hidden group-hover:flex flex-col gap-2 items-center">
-                  {/* User Name */}
-                  <p className="text-gray-700 text-sm font-medium">
-                    {user.displayName}
-                  </p>
-                </div>
               </div>
             ) : (
               <div className="flex gap-3">
