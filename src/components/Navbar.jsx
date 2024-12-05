@@ -1,7 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/crowdlogo.png";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
+    const {user} = useContext(AuthContext);
   return (
     <div className="p-[0px] md:p-[30px]">
       <div className="max-w-[120rem] mx-auto ">
