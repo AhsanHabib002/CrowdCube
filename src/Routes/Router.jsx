@@ -4,6 +4,8 @@ import AddNewCampaign from "../Layouts/AddNewCampaign";
 import AllCampaign from "../Layouts/AllCampaign";
 import MyCampaign from "../Layouts/MyCampaign";
 import MyDonations from "../Layouts/MyDonations";
+import AuthLayout from "../Layouts/AuthLayout";
+import Login from "../components/Pages/Login";
 
 const Router = createBrowserRouter([
     {
@@ -33,7 +35,17 @@ const Router = createBrowserRouter([
     },
     {
         path: "/auth",
-        element: <h1>Crowd Club auth layout</h1>
+        element: <AuthLayout></AuthLayout>,
+        children: [
+            {
+                path:"/auth/login",
+                element: <Login></Login>,
+            },
+            {
+                path:"/auth/register",
+                element: <h2>This is Register</h2>
+            },
+        ]
     },
     {
         path: "*",
