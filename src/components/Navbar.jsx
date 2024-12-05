@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
-    const {user} = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   return (
     <div className="p-[0px] md:p-[30px]">
       <div className="max-w-[120rem] mx-auto ">
@@ -91,9 +91,37 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="navbar-end">
-            <Link to="/auth/login">
-              <a className="btn bg-[#BDE345] text-white">Log In</a>
-            </Link>
+            {user && user?.email ? (
+              <div className="relative group flex gap-2">
+                <img
+                  src={user.photoURL}
+                  alt={user.displayName}
+                  className="w-10 h-10 rounded-full cursor-pointer object-cover"
+                />
+                {/* Logout Button */}
+                <button
+                  onClick={logout}
+                  className="mt-2 bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
+                >
+                  Logout
+                </button>
+                <div className="absolute top-9 right-0 mt-2 w-48 bg-white shadow-md rounded-lg p-4 hidden group-hover:flex flex-col gap-2 items-center">
+                  {/* User Name */}
+                  <p className="text-gray-700 text-sm font-medium">
+                    {user.displayName}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="flex gap-3">
+                <Link to="/auth/login">
+                  <a className="btn bg-[#BDE345] text-white">Log In</a>
+                </Link>
+                <Link to="/auth/register">
+                  <a className="btn btn-outline text-black">Register</a>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
