@@ -6,6 +6,7 @@ import MyCampaign from "../Layouts/MyCampaign";
 import MyDonations from "../Layouts/MyDonations";
 import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../components/Pages/Login";
+import Register from "../components/Pages/Register";
 
 const Router = createBrowserRouter([
     {
@@ -43,7 +44,7 @@ const Router = createBrowserRouter([
             },
             {
                 path:"/auth/register",
-                element: <h2>This is Register</h2>
+                element:<Register></Register>,
             },
         ]
     },
