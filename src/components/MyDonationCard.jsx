@@ -15,7 +15,7 @@ const MyDonationCard = ({ donation }) => {
     <div>
       <div className="flex flex-col max-w-96 shadow-xl p-4 rounded-lg h-[100%]">
         <div>
-          <img className="rounded-md object-cover" src={image} alt="" />
+          <img className="rounded-md object-cover h-[150px] w-full object-cover" src={image} alt="" />
         </div>
         <div className="mt-4 flex flex-col gap-2">
           <h3 className="text-[22px] font-medium">{title}</h3>

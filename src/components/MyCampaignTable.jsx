@@ -1,0 +1,81 @@
+import Swal from "sweetalert2";
+
+const MyCampaignTable = ({ campaign }) => {
+  const {
+    _id,
+    image,
+    title,
+    type,
+    description,
+    minimum_donation_amount,
+    deadline,
+    user_email,
+    user_name,
+  } = campaign;
+
+  const handleDelet = (_id) => {
+    console.log(_id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        fetch(`http://localhost:5000/campaigns/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your campaign has been deleted.",
+                    icon: "success",
+                  });
+            }
+          });
+      }
+    });
+  };
+  return (
+    <div>
+      <table className="w-full border-collapse border border-gray-200">
+        <thead>
+          <tr>
+            <th className="border p-2">Title</th>
+            <th className="border p-2">Description</th>
+            <th className="border p-2">Deadline</th>
+            <th className="border p-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className="border p-2">{title}</td>
+            <td className="border p-2">{description}</td>
+            <td className="border p-2">
+              {new Date(deadline).toLocaleDateString()}
+            </td>
+            <td className=" p-2 flex flex-col justify-center items-center gap-2">
+              <button className="bg-[#BDE345] text-white px-4 py-1 rounded w-full">
+                Update
+              </button>
+              <button
+                onClick={() => handleDelet(_id)}
+                className="bg-red-500 text-white px-4 py-1 rounded w-full"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default MyCampaignTable;
