@@ -21,8 +21,22 @@ const AddNewCampaign = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleAddCampaign = (e) => {
     e.preventDefault();
+    const form = e.target;
+
+    const title = form.title.value;
+    const image = form.image.value;
+    const type = form.type.value;
+    const description = form.description.value;
+    const minimum_donation_amount = form.title.value;
+    const deadline = form.deadline.value;
+    const user_email = form.user_email.value;
+    const user_name = form.user_name.value;
+
+    const newCampaign = {title, image, type, description, deadline, minimum_donation_amount, user_email, user_name};
+   
+
     if (
       !formData.image ||
       !formData.title ||
@@ -34,16 +48,23 @@ const AddNewCampaign = () => {
       return;
     }
 
-    const newCampaign = {
-      ...formData,
-      email: user.email,
-      name: user.displayName,
-    };
+    fetch('http://localhost:5000/campaings', {
+        method: 'POST',
+        headers: {
+            'content-Type': 'application/json'
+        },
+        body: JSON.stringify(newCampaign)
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.insertedId){
+            toast.success("Campaign added successfully!");
+        }
+        
+    })
 
-    // Add your API logic here to save `newCampaign` to the database.
-    console.log("New Campaign Data:", newCampaign);
 
-    toast.success("Campaign added successfully!");
+    
 
     setFormData({
       image: "",
@@ -63,9 +84,9 @@ const AddNewCampaign = () => {
       </div>
       <ToastContainer></ToastContainer>
       <div className="max-w-[640px] mx-auto bg-white shadow-2xl p-5 rounded-md">
-        <form onSubmit={handleSubmit}>
-          <div className="flex gap-4 w-full">
-            <div className="form-control w-1/2">
+        <form onSubmit={handleAddCampaign}>
+          <div className="md:flex gap-4 w-full">
+            <div className="form-control w-full md:w-1/2">
               <label className="label">
                 <span className="label-text">Campaign Title</span>
               </label>
@@ -79,7 +100,7 @@ const AddNewCampaign = () => {
                 required
               />
             </div>
-            <div className="form-control w-1/2">
+            <div className="form-control w-full md:w-1/2">
               <label className="label">
                 <span className="label-text">Campaign Image</span>
               </label>
@@ -94,8 +115,8 @@ const AddNewCampaign = () => {
               />
             </div>
           </div>
-          <div className="flex gap-4 w-full">
-            <div className="form-control w-1/2">
+          <div className="md:flex gap-4 w-full">
+            <div className="form-control w-full md:w-1/2">
               <label className="label">
                 <span className="label-text">Campaign Type</span>
               </label>
@@ -111,7 +132,7 @@ const AddNewCampaign = () => {
                 <option value="creative ideas">Creative Ideas</option>
               </select>
             </div>
-            <div className="form-control w-1/2">
+            <div className="form-control w-full md:w-1/2">
               <label className="label">
                 <span className="label-text">Donation Amount</span>
               </label>
@@ -126,7 +147,7 @@ const AddNewCampaign = () => {
               />
             </div>
           </div>
-          <div className="flex gap-4 w-full">
+          <div className="md:flex gap-4 w-full">
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Description</span>
@@ -142,7 +163,7 @@ const AddNewCampaign = () => {
               ></textarea>
             </div>
           </div>
-          <div className="flex gap-4 w-full">
+          <div className="md:flex gap-4 w-full">
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Campaign Deadline</span>
@@ -157,8 +178,8 @@ const AddNewCampaign = () => {
               />
             </div>
           </div>
-          <div className="flex gap-4 w-full">
-            <div className="form-control w-1/2">
+          <div className="md:flex gap-4 w-full">
+            <div className="form-control w-full md:w-1/2">
               <label className="label">
                 <span className="label-text">Your Email</span>
               </label>
@@ -172,7 +193,7 @@ const AddNewCampaign = () => {
                 readOnly
               />
             </div>
-            <div className="form-control w-1/2">
+            <div className="form-control w-full md:w-1/2">
               <label className="label">
                 <span className="label-text">Your Name</span>
               </label>
@@ -188,9 +209,11 @@ const AddNewCampaign = () => {
             </div>
           </div>
           <div className="mt-[30px]">
-            <button type="submit" className="btn bg-[#BDE345] w-full">
-              Add Campaign
-            </button>
+            <input
+              type="submit"
+              value="Add Campaign"
+              className="btn bg-[#BDE345] w-full"
+            />
           </div>
         </form>
       </div>

@@ -28,7 +28,7 @@ const CampaignCard = ({ campaign }) => {
           <p><span className="text-[18px] font-medium">Description:</span> {description}</p>
         </div>
 
-        <Link to="/campaing-detail"><button className="btn bg-[#BDE345] mt-[30px]">View Details</button></Link>
+        <Link to={`/campaing-detail/${campaign._id}`}><button className="btn bg-[#BDE345] mt-[30px]">See More</button></Link>
       </div>
     </div>
   );

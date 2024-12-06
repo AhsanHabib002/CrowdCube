@@ -9,6 +9,7 @@ import Login from "../components/Pages/Login";
 import Register from "../components/Pages/Register";
 import Forget from "../components/Pages/Forget";
 import PrivateRoute from "./PrivateRoute";
+import CampaignDetail from "../Layouts/CampaignDetail";
 
 const Router = createBrowserRouter([
   {
@@ -21,8 +22,9 @@ const Router = createBrowserRouter([
     loader: () => fetch("http://localhost:5000/campaings"),
   },
   {
-    path: "/campaing-detail",
-    element: <h1>Crowd Club campaing-detail layout</h1>,
+    path: "/campaing-detail/:id",
+    element: <CampaignDetail></CampaignDetail>,
+    loader: ({params}) => fetch(`http://localhost:5000/campaings/${params.id}`)
   },
   {
     path: "/add-new-campaign",

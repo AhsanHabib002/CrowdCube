@@ -100,7 +100,7 @@ const Navbar = () => {
                   src={user.photoURL}
                   alt={user.displayName}
                   className="w-10 h-10 rounded-full cursor-pointer"
-                  data-tooltip-content={user.displayName} // Tooltip content
+                  data-tooltip-content={user.displayName} 
                   data-tooltip-id="userTooltip"
                 />
                 <Tooltip
