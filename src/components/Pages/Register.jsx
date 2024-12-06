@@ -56,6 +56,7 @@ const Register = () => {
 
   return (
     <div className="max-w-[380px] mx-auto py-[90px] px-2">
+        <ToastContainer />
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <form onSubmit={handleSubmit} className="card-body">
           <h2 className="text-center font-semibold text-2xl mb-4">
