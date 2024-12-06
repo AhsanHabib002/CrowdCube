@@ -10,6 +10,8 @@ import Register from "../components/Pages/Register";
 import Forget from "../components/Pages/Forget";
 import PrivateRoute from "./PrivateRoute";
 import CampaignDetail from "../Layouts/CampaignDetail";
+import UpdateCampaign from "../Layouts/UpdateCampaign";
+
 
 const Router = createBrowserRouter([
   {
@@ -23,9 +25,12 @@ const Router = createBrowserRouter([
   },
   {
     path: "/campaing-detail/:id",
-    element: <CampaignDetail></CampaignDetail>,
+    element: <PrivateRoute>
+        <CampaignDetail></CampaignDetail>
+    </PrivateRoute>,
     loader: ({params}) => fetch(`http://localhost:5000/campaings/${params.id}`)
   },
+  
   {
     path: "/add-new-campaign",
     element: (
@@ -33,6 +38,15 @@ const Router = createBrowserRouter([
         <AddNewCampaign></AddNewCampaign>
       </PrivateRoute>
     ),
+  },
+  {
+    path: "/update-campaign/:id",
+    element: (
+      <PrivateRoute>
+        <UpdateCampaign></UpdateCampaign>
+      </PrivateRoute>
+    ),
+    loader: ({params}) => fetch(`http://localhost:5000/campaings/${params.id}`)
   },
   {
     path: "/mycampaign",

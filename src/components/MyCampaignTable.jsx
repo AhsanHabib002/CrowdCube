@@ -1,6 +1,9 @@
+
+
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const MyCampaignTable = ({ campaign }) => {
+const MyCampaignTable = ({ campaign}) => {
   const {
     _id,
     image,
@@ -12,6 +15,8 @@ const MyCampaignTable = ({ campaign }) => {
     user_email,
     user_name,
   } = campaign;
+  
+  const navigate = useNavigate();
 
   const handleDelet = (_id) => {
     console.log(_id);
@@ -25,18 +30,17 @@ const MyCampaignTable = ({ campaign }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        
         fetch(`http://localhost:5000/campaigns/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your campaign has been deleted.",
-                    icon: "success",
-                  });
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your campaign has been deleted.",
+                icon: "success",
+              });
             }
           });
       }
@@ -61,9 +65,10 @@ const MyCampaignTable = ({ campaign }) => {
               {new Date(deadline).toLocaleDateString()}
             </td>
             <td className=" p-2 flex flex-col justify-center items-center gap-2">
-              <button className="bg-[#BDE345] text-white px-4 py-1 rounded w-full">
+              <button onClick={() => navigate(`/update-campaign/${_id}`)} className="bg-[#BDE345] text-white px-4 py-1 rounded w-full">
                 Update
               </button>
+
               <button
                 onClick={() => handleDelet(_id)}
                 className="bg-red-500 text-white px-4 py-1 rounded w-full"

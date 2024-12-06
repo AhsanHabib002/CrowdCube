@@ -3,11 +3,10 @@ import Navbar from "../components/Navbar";
 import { AuthContext } from "../Provider/AuthProvider";
 import MyCampaignTable from "../components/MyCampaignTable";
 
-
 const MyCampaign = () => {
   const { user } = useContext(AuthContext);
   const [campaigns, setCampaigns] = useState([]);
-  const [selecte, setSelect] = useState(null);
+  
 
   useEffect(() => {
     if (user.email) {
@@ -17,24 +16,22 @@ const MyCampaign = () => {
     }
   }, [user.email]);
 
-  
-
+ 
   return (
     <div>
       <Navbar></Navbar>
       <div className="max-w-[800px] mx-auto my-[90px]">
-        
         <h2 className="text-3xl font-semibold">
           My Campaign:{campaigns.length}{" "}
         </h2>
 
         <div className="mt-[90px]">
           {campaigns.map((campaign) => (
-                <MyCampaignTable
-                  key={campaign._id}
-                  campaign={campaign}
-                ></MyCampaignTable>
-              ))}
+            <MyCampaignTable
+              key={campaign._id}
+              campaign={campaign}
+            ></MyCampaignTable>
+          ))}
         </div>
       </div>
     </div>
