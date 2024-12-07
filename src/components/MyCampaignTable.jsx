@@ -1,9 +1,7 @@
-
-
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const MyCampaignTable = ({ campaign}) => {
+const MyCampaignTable = ({ campaign }) => {
   const {
     _id,
     image,
@@ -15,7 +13,7 @@ const MyCampaignTable = ({ campaign}) => {
     user_email,
     user_name,
   } = campaign;
-  
+
   const navigate = useNavigate();
 
   const handleDelet = (_id) => {
@@ -47,39 +45,31 @@ const MyCampaignTable = ({ campaign}) => {
     });
   };
   return (
-    <div>
-      <table className="w-full border-collapse border border-gray-200">
-        <thead>
-          <tr>
-            <th className="border p-2">Title</th>
-            <th className="border p-2">Description</th>
-            <th className="border p-2">Deadline</th>
-            <th className="border p-2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="border p-2">{title}</td>
-            <td className="border p-2">{description}</td>
-            <td className="border p-2">
-              {new Date(deadline).toLocaleDateString()}
-            </td>
-            <td className=" p-2 flex flex-col justify-center items-center gap-2">
-              <button onClick={() => navigate(`/update-campaign/${_id}`)} className="bg-[#BDE345] text-white px-4 py-1 rounded w-full">
-                Update
-              </button>
+   
+      
+      <tr>
+        <td className="border p-2">{title}</td>
+        <td className="border p-2">{description}</td>
+        <td className="border p-2">
+          {new Date(deadline).toLocaleDateString()}
+        </td>
+        <td className=" p-2 flex flex-col justify-center items-center gap-2">
+          <button
+            onClick={() => navigate(`/update-campaign/${_id}`)}
+            className="bg-[#BDE345] text-white px-4 py-1 rounded w-full"
+          >
+            Update
+          </button>
 
-              <button
-                onClick={() => handleDelet(_id)}
-                className="bg-red-500 text-white px-4 py-1 rounded w-full"
-              >
-                Delete
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+          <button
+            onClick={() => handleDelet(_id)}
+            className="bg-red-500 text-white px-4 py-1 rounded w-full"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+  
   );
 };
 

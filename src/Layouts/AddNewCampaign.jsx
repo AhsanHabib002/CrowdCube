@@ -171,7 +171,7 @@ const AddNewCampaign = () => {
               <input
                 type="date"
                 name="deadline"
-                value={formData.deadline}
+                value={deadline}
                 onChange={handleChange}
                 className="input input-bordered w-full"
                 required

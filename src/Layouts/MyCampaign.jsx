@@ -6,7 +6,6 @@ import MyCampaignTable from "../components/MyCampaignTable";
 const MyCampaign = () => {
   const { user } = useContext(AuthContext);
   const [campaigns, setCampaigns] = useState([]);
-  
 
   useEffect(() => {
     if (user.email) {
@@ -16,7 +15,6 @@ const MyCampaign = () => {
     }
   }, [user.email]);
 
- 
   return (
     <div>
       <Navbar></Navbar>
@@ -26,12 +24,24 @@ const MyCampaign = () => {
         </h2>
 
         <div className="mt-[90px]">
-          {campaigns.map((campaign) => (
-            <MyCampaignTable
-              key={campaign._id}
-              campaign={campaign}
-            ></MyCampaignTable>
-          ))}
+          <table className="w-full border-collapse border border-gray-200">
+            <thead>
+              <tr>
+                <th className="border p-2">Title</th>
+                <th className="border p-2">Description</th>
+                <th className="border p-2">Deadline</th>
+                <th className="border p-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {campaigns.map((campaign) => (
+                <MyCampaignTable
+                  key={campaign._id}
+                  campaign={campaign}
+                ></MyCampaignTable>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
