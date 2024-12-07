@@ -23,7 +23,7 @@ const UpdateCampaign = () => {
       deadline: event.target.deadline.value,
     };
 
-    fetch(`http://localhost:5000/campaigns/${campaign._id}`, {
+    fetch(`https://crowd-club-server.vercel.app/campaigns/${campaign._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedCampaign),

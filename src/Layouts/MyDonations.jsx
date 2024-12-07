@@ -10,7 +10,7 @@ const MyDonations = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/mydonations?email=${user.email}`)
+    fetch(`https://crowd-club-server.vercel.app/mydonations?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setDonations(data);

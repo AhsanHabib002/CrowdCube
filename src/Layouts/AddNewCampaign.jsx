@@ -49,7 +49,7 @@ const AddNewCampaign = () => {
       return;
     }
 
-    fetch('http://localhost:5000/campaings', {
+    fetch('https://crowd-club-server.vercel.app/campaings', {
         method: 'POST',
         headers: {
             'content-Type': 'application/json'

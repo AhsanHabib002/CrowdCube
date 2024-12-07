@@ -33,7 +33,7 @@ const CampaignDetail = () => {
       user_name: user.displayName,
       donated_date: currentDate.toISOString(),
     };
-    fetch("http://localhost:5000/donations",{
+    fetch("https://crowd-club-server.vercel.app/donations",{
         method: "POST",
         headers: {
             "Content-Type": "application/json",

@@ -28,7 +28,7 @@ const MyCampaignTable = ({ campaign }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/campaigns/${_id}`, {
+        fetch(`https://crowd-club-server.vercel.app/campaigns/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

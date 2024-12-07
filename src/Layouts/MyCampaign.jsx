@@ -10,7 +10,7 @@ const MyCampaign = () => {
 
   useEffect(() => {
     if (user.email) {
-      fetch(`http://localhost:5000/mycampaign?email=${user.email}`)
+      fetch(`https://crowd-club-server.vercel.app/mycampaign?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setCampaigns(data));
     }

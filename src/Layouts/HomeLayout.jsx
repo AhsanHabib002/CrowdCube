@@ -10,6 +10,8 @@ import { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 
 const HomeLayout = () => {
+  const runningCampaign = useLoaderData();
+  
   const [isDark, setIsDark] = useState(false);
 
   const toggleDark = () => {
@@ -20,7 +22,7 @@ const HomeLayout = () => {
       document.documentElement.classList.remove("dark");
     }
   };
-  const runningCampaign = useLoaderData();
+ 
   return (
     <div className="bg-white text-black dark:bg-gray-900 dark:text-white">
       <Navbar></Navbar>
@@ -76,7 +78,7 @@ const HomeLayout = () => {
           </div>
         </div>
         <div className="absolute top-[15%] left-[20%] flex flex-col md:top-[25%] md:left-20">
-          <Fade direction="up" triggerOnce>
+          <Fade>
             <h1 className=" text-[#FBFF62] text-3xl font-bold md:text-[80px] md:leading-[90px]">
               Explore & Enjoy <br />
               Crowd Club
@@ -103,6 +105,7 @@ const HomeLayout = () => {
           Running Campagins
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            
           {runningCampaign.map((runcamp) => (
             <RunCampCard key={runcamp._id} runcamp={runcamp}></RunCampCard>
           ))}

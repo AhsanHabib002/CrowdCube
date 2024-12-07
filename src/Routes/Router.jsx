@@ -13,26 +13,39 @@ import CampaignDetail from "../Layouts/CampaignDetail";
 import UpdateCampaign from "../Layouts/UpdateCampaign";
 import Error from "../Layouts/Error";
 
-
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
-    loader: ()=> fetch("http://localhost:5000/running-campaigns?limit=6")
+    loader: async () => {
+      const response = await fetch(
+        "https://crowd-club-server.vercel.app/running-campaigns"
+      );
+      
+      return response.json();
+    },
   },
   {
     path: "/allcampaing",
     element: <AllCampaign></AllCampaign>,
-    loader: () => fetch("http://localhost:5000/campaings"),
+    loader: async () => {
+      const response = await fetch(
+        "https://crowd-club-server.vercel.app/campaings"
+      );
+      return response.json();
+    },
   },
   {
     path: "/campaing-detail/:id",
-    element: <PrivateRoute>
+    element: (
+      <PrivateRoute>
         <CampaignDetail></CampaignDetail>
-    </PrivateRoute>,
-    loader: ({params}) => fetch(`http://localhost:5000/campaings/${params.id}`)
+      </PrivateRoute>
+    ),
+    loader: ({ params }) =>
+      fetch(`https://crowd-club-server.vercel.app/campaings/${params.id}`),
   },
-  
+
   {
     path: "/add-new-campaign",
     element: (
@@ -48,7 +61,8 @@ const Router = createBrowserRouter([
         <UpdateCampaign></UpdateCampaign>
       </PrivateRoute>
     ),
-    loader: ({params}) => fetch(`http://localhost:5000/campaings/${params.id}`)
+    loader: ({ params }) =>
+      fetch(`https://crowd-club-server.vercel.app/campaings/${params.id}`),
   },
   {
     path: "/mycampaign",
@@ -61,9 +75,9 @@ const Router = createBrowserRouter([
   {
     path: "/mydonations",
     element: (
-        <PrivateRoute>
-            <MyDonations></MyDonations>
-        </PrivateRoute>
+      <PrivateRoute>
+        <MyDonations></MyDonations>
+      </PrivateRoute>
     ),
   },
   {
