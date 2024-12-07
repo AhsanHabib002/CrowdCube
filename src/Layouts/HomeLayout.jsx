@@ -81,11 +81,11 @@ const HomeLayout = () => {
           <Fade>
             <h1 className=" text-[#FBFF62] text-3xl font-bold md:text-[80px] md:leading-[90px]">
               Explore & Enjoy <br />
-              Crowd Club
+              Crowd Cube
             </h1>
           </Fade>
           <p className="text-white mt-6 max-w-[550px]">
-            Crowd Club is the biggest solution for generating fund. It connect
+            Crowd Cube is the biggest solution for generating fund. It connect
             investors with the people who need investment for their business or
             if someone need help for personal issue.{" "}
           </p>

@@ -69,7 +69,7 @@ const Navbar = () => {
             </div>
             <div className="flex gap-1 justify-start items-end">
               <img src={logo} alt="crowd-club logo" />
-              <a className="text-[12px] md:text-xl font-bold">rowd Club</a>
+              <a className="text-[12px] md:text-xl font-bold">rowd Cube</a>
             </div>
           </div>
           <div className="navbar-center hidden lg:flex border border-black rounded-[50px] backdrop-blur-sm">
