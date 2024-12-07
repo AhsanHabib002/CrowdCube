@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { AuthContext } from "../Provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "../components/Footer";
 
 const AddNewCampaign = () => {
   const { user } = useContext(AuthContext);
@@ -171,7 +172,7 @@ const AddNewCampaign = () => {
               <input
                 type="date"
                 name="deadline"
-                value={deadline}
+                value={formData.deadline}
                 onChange={handleChange}
                 className="input input-bordered w-full"
                 required
@@ -217,6 +218,7 @@ const AddNewCampaign = () => {
           </div>
         </form>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

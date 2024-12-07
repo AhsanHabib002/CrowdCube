@@ -11,6 +11,7 @@ import Forget from "../components/Pages/Forget";
 import PrivateRoute from "./PrivateRoute";
 import CampaignDetail from "../Layouts/CampaignDetail";
 import UpdateCampaign from "../Layouts/UpdateCampaign";
+import Error from "../Layouts/Error";
 
 
 const Router = createBrowserRouter([
@@ -85,7 +86,7 @@ const Router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <h1>404 Error</h1>,
+    element: <Error></Error>,
   },
 ]);
 

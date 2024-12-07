@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { AuthContext } from "../Provider/AuthProvider";
 import MyDonationCard from "../components/MyDonationCard";
+import Footer from "../components/Footer";
 
 const MyDonations = () => {
   const { user } = useContext(AuthContext);
@@ -37,6 +38,7 @@ const MyDonations = () => {
             }
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

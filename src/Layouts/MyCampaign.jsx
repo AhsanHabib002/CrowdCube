@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { AuthContext } from "../Provider/AuthProvider";
 import MyCampaignTable from "../components/MyCampaignTable";
+import Footer from "../components/Footer";
 
 const MyCampaign = () => {
   const { user } = useContext(AuthContext);
@@ -44,6 +45,7 @@ const MyCampaign = () => {
           </table>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { FaEye } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { userLogin, setUser, googleLogin } = useContext(AuthContext);
@@ -24,7 +25,7 @@ const Login = () => {
         const user = result.user;
         setUser(user);
         navigate("/");
-        toast.success("Login Successful");
+        Swal.fire("Logged In", "Your Login is Successful.", "success");
       })
       .catch((error) => {
         toast.error(`Error: ${error.message}`);

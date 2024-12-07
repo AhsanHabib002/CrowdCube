@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import CampaignCard from "../components/CampaignCard";
+import Footer from "../components/Footer";
 
 const AllCampaign = () => {
   const campaigns = useLoaderData();
@@ -32,6 +33,7 @@ const AllCampaign = () => {
           </table>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

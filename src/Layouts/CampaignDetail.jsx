@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
+import Footer from "../components/Footer";
 
 const CampaignDetail = () => {
   const detail = useLoaderData();
@@ -114,6 +115,7 @@ const CampaignDetail = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };
