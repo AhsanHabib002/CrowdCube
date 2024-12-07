@@ -2,9 +2,24 @@ import { useLoaderData } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import CampaignCard from "../components/CampaignCard";
 import Footer from "../components/Footer";
+import { useEffect, useState } from "react";
+import Loader from "../components/Pages/Loader";
 
 const AllCampaign = () => {
   const campaigns = useLoaderData();
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    if (campaigns) {
+      setLoading(false);
+    }
+  }, [campaigns]);
+  if (loading) {
+    return (
+      <p className="text-center mt-8">
+        <Loader></Loader>
+      </p>
+    );
+  }
 
   return (
     <div>

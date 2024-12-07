@@ -17,7 +17,6 @@ const MyCampaignTable = ({ campaign }) => {
   const navigate = useNavigate();
 
   const handleDelet = (_id) => {
-    console.log(_id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",

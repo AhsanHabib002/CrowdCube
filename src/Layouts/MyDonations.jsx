@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { AuthContext } from "../Provider/AuthProvider";
 import MyDonationCard from "../components/MyDonationCard";
 import Footer from "../components/Footer";
+import Loader from "../components/Pages/Loader";
 
 const MyDonations = () => {
   const { user } = useContext(AuthContext);
@@ -23,7 +24,7 @@ const MyDonations = () => {
   }, [user.email]);
 
   if (loading) {
-    return <p className="text-center mt-8">Loading donations...</p>;
+    return <p className="text-center mt-8"><Loader></Loader></p>;
   }
 
   return (
