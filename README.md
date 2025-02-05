@@ -10,7 +10,7 @@
 
 ## 🚀 Screenshot
 
-![CrowdCube Preview]((https://i.postimg.cc/gcRr613j/Screenshot-2025-02-05-152531.png))
+<img src="https://i.postimg.cc/gcRr613j/Screenshot-2025-02-05-152531.png" alt="My Web Design" width="100%"/>
 
 ---
 
